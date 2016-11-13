@@ -1,5 +1,6 @@
 #include "GameScene.h"
 #include "SimpleAudioEngine.h"
+#include "GameController.hpp"
 
 USING_NS_CC;
 
@@ -31,6 +32,8 @@ bool GameScene::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    
+    
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
@@ -48,6 +51,9 @@ bool GameScene::init()
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
+    
+    gameController = GameController::createTestGame(this);
+    
 
     /////////////////////////////
     // 3. add your codes below...
@@ -55,7 +61,7 @@ bool GameScene::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
+    /*auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     
     // position the label on the center of the screen
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
@@ -71,7 +77,7 @@ bool GameScene::init()
     sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+    this->addChild(sprite, 0);*/
     
     return true;
 }

@@ -2,6 +2,9 @@
 #define __GameScene_H__
 
 #include "cocos2d.h"
+#include "GameController.hpp"
+
+NS_CC_BEGIN
 
 class GameScene : public cocos2d::Layer
 {
@@ -15,6 +18,10 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
+    
+    GameController* gameController;
 };
 
 #endif // __GameScene_H__
+
+NS_CC_END

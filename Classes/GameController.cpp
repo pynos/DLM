@@ -1,0 +1,116 @@
+//
+//  GameController.cpp
+//  DLM
+//
+//  Created by admin on 11/11/16.
+//
+//
+
+#include "GameController.hpp"
+
+using namespace cocos2d;
+
+GameController::GameController()
+{
+    numPlatforms = 3;
+}
+
+GameController::~GameController()
+{
+    
+}
+
+GameController* GameController::create(Node* scene)
+{
+    GameController* gc = new GameController();
+    gc->scene = scene;
+    return gc;
+}
+
+GameController* GameController::createTestGame(Node* scene)
+{
+    GameController* gc = create(scene);
+    gc->createEnvironment();
+    gc->spawnPlayers(0);
+    gc->spawnEnemy(2);
+    
+    return gc;
+}
+
+void GameController::createEnvironment()
+{
+    auto spritecache = SpriteFrameCache::getInstance();
+    spritecache->addSpriteFramesWithFile("game_art.plist");
+    
+    if (scene)
+    {
+        auto visibleSize = Director::getInstance()->getVisibleSize();
+        Vec2 origin = Director::getInstance()->getVisibleOrigin();
+        
+        Sprite* s = Sprite::createWithSpriteFrameName("platform.png");
+        platformHeight = s->getContentSize().height;
+        levelSpacing = (visibleSize.height - (s->getContentSize().height * numPlatforms)) / numPlatforms;
+        
+        for (int i = 0; i < numPlatforms; i++)
+        {
+            if (i > 0)
+                s = Sprite::createWithSpriteFrameName("platform.png");
+            
+            s->setAnchorPoint(Vec2(0,1));
+            s->setPosition(origin.x, getLevelPositionY(i));
+            s->setScaleX(visibleSize.width / s->getContentSize().width);
+            
+            scene->addChild(s);
+        }
+    }
+}
+
+float GameController::getLevelPositionY(int level)
+{
+    Vec2 vec = Director::getInstance()->getVisibleOrigin();
+    vec.y += ( (platformHeight + levelSpacing) * level + platformHeight);
+    return vec.y;
+}
+
+void GameController::spawnPlayers(int level)
+{
+    if (scene)
+    {
+        auto visibleSize = Director::getInstance()->getVisibleSize();
+        Vec2 origin = Director::getInstance()->getVisibleOrigin();
+        
+        Sprite* s = Sprite::createWithSpriteFrameName("enemy_test/frame_0001.png");
+        s->setAnchorPoint( Vec2(0.5, 0.5) );
+        s->setScaleX(-1);
+        s->setPosition(origin.x + s->getContentSize().width / 2, getLevelPositionY(level) + s->getContentSize().height / 2);
+        
+        scene->addChild(s);
+    }
+}
+
+void GameController::spawnEnemy(int level)
+{
+    if (scene)
+    {
+        auto visibleSize = Director::getInstance()->getVisibleSize();
+        Vec2 origin = Director::getInstance()->getVisibleOrigin();
+        
+        Sprite* s = Sprite::createWithSpriteFrameName("enemy_test/frame_0001.png");
+        s->setAnchorPoint( Vec2(0.5, 0.5) );
+        s->setScale(0.5);
+        s->setPosition(origin.x + visibleSize.width - s->getContentSize().width * s->getScale() / 2, getLevelPositionY(1) + s->getContentSize().height * s->getScale() / 2);
+        
+        scene->addChild(s);
+    }
+}
+
+void GameController::spawnBullet()
+{
+    
+}
+
+void GameController::spawnExplosion()
+{
+    
+}
+
