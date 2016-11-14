@@ -10,7 +10,8 @@
 
 using namespace cocos2d;
 
-GameController::GameController()
+GameController::GameController() :
+player(nullptr)
 {
     numPlatforms = 3;
 }
@@ -79,12 +80,12 @@ void GameController::spawnPlayers(int level)
         auto visibleSize = Director::getInstance()->getVisibleSize();
         Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
-        Sprite* s = Sprite::createWithSpriteFrameName("enemy_test/frame_0001.png");
-        s->setAnchorPoint( Vec2(0.5, 0.5) );
-        s->setScaleX(-1);
-        s->setPosition(origin.x + s->getContentSize().width / 2, getLevelPositionY(level) + s->getContentSize().height / 2);
+        player = (Player*)Player::createWithSpriteFrameName("enemy_test/frame_0001.png");
+        player->setAnchorPoint( Vec2(0.5, 0.5) );
+        player->setScaleX(-1);
+        player->setPosition(origin.x + player->getContentSize().width / 2, getLevelPositionY(level) + player->getContentSize().height / 2);
         
-        scene->addChild(s);
+        scene->addChild(player);
     }
 }
 
@@ -95,12 +96,13 @@ void GameController::spawnEnemy(int level)
         auto visibleSize = Director::getInstance()->getVisibleSize();
         Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
-        Sprite* s = Sprite::createWithSpriteFrameName("enemy_test/frame_0001.png");
+        Enemy* s = (Enemy*)Enemy::createWithSpriteFrameName("enemy_test/frame_0001.png");
         s->setAnchorPoint( Vec2(0.5, 0.5) );
         s->setScale(0.5);
         s->setPosition(origin.x + visibleSize.width - s->getContentSize().width * s->getScale() / 2, getLevelPositionY(1) + s->getContentSize().height * s->getScale() / 2);
         
         scene->addChild(s);
+        getEnemies().push_back(s);
     }
 }
 

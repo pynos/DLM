@@ -59,6 +59,9 @@
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		840D06BC1DD99FD500C75A5E /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840D06BA1DD99FD500C75A5E /* Player.cpp */; };
+		840D06BF1DD9A09300C75A5E /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840D06BD1DD9A09300C75A5E /* Actor.cpp */; };
+		840D06C21DD9A41400C75A5E /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840D06C01DD9A41400C75A5E /* Enemy.cpp */; };
 		848D2F3D1DD43F6600EDE857 /* enemies in Resources */ = {isa = PBXBuildFile; fileRef = 848D2F3C1DD43F6600EDE857 /* enemies */; };
 		849291251DD6D4A900E73B9C /* SceneBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 849291231DD6D4A900E73B9C /* SceneBase.cpp */; };
 		849291261DD6D4A900E73B9C /* SceneBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 849291231DD6D4A900E73B9C /* SceneBase.cpp */; };
@@ -172,6 +175,12 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		840D06BA1DD99FD500C75A5E /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		840D06BB1DD99FD500C75A5E /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		840D06BD1DD9A09300C75A5E /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
+		840D06BE1DD9A09300C75A5E /* Actor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Actor.hpp; sourceTree = "<group>"; };
+		840D06C01DD9A41400C75A5E /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
+		840D06C11DD9A41400C75A5E /* Enemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Enemy.hpp; sourceTree = "<group>"; };
 		848D2F3C1DD43F6600EDE857 /* enemies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = enemies; sourceTree = "<group>"; };
 		849291231DD6D4A900E73B9C /* SceneBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneBase.cpp; sourceTree = "<group>"; };
 		849291241DD6D4A900E73B9C /* SceneBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SceneBase.hpp; sourceTree = "<group>"; };
@@ -333,6 +342,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				840D06B81DD99F7F00C75A5E /* actors */,
 				84B66E1D1DD6E81A003C8E18 /* controllers */,
 				849291271DD6D59300E73B9C /* data */,
 				849291221DD6D46200E73B9C /* scenes */,
@@ -391,6 +401,19 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		840D06B81DD99F7F00C75A5E /* actors */ = {
+			isa = PBXGroup;
+			children = (
+				840D06BA1DD99FD500C75A5E /* Player.cpp */,
+				840D06BB1DD99FD500C75A5E /* Player.hpp */,
+				840D06BD1DD9A09300C75A5E /* Actor.cpp */,
+				840D06BE1DD9A09300C75A5E /* Actor.hpp */,
+				840D06C01DD9A41400C75A5E /* Enemy.cpp */,
+				840D06C11DD9A41400C75A5E /* Enemy.hpp */,
+			);
+			name = actors;
+			sourceTree = "<group>";
 		};
 		849291221DD6D46200E73B9C /* scenes */ = {
 			isa = PBXGroup;
@@ -571,10 +594,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840D06C21DD9A41400C75A5E /* Enemy.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* GameScene.cpp in Sources */,
 				84B66E201DD6E8A2003C8E18 /* ControllerBase.cpp in Sources */,
+				840D06BF1DD9A09300C75A5E /* Actor.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				840D06BC1DD99FD500C75A5E /* Player.cpp in Sources */,
 				84B66E241DD6EA1A003C8E18 /* GameController.cpp in Sources */,
 				849291251DD6D4A900E73B9C /* SceneBase.cpp in Sources */,
 				8492912A1DD6D5E000E73B9C /* SceneDataBase.cpp in Sources */,

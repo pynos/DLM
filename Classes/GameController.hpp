@@ -10,6 +10,8 @@
 #define GameController_hpp
 
 #include <stdio.h>
+#include "Player.hpp"
+#include "Enemy.hpp"
 
 NS_CC_BEGIN
 
@@ -41,6 +43,8 @@ private:
     CC_SYNTHESIZE(float, levelSpacing, LavelSpacing);
     CC_SYNTHESIZE(float, platformHeight, PlatformHeight);
     CC_SYNTHESIZE(int, numPlatforms, NumPlatforms);
+    CC_SYNTHESIZE(Player*, player, Player);
+    CC_SYNTHESIZE(std::vector<Enemy*>, enemies, Enemies)
 };
 
 NS_CC_END
