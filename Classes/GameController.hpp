@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "Player.hpp"
 #include "Enemy.hpp"
+#include "World.hpp"
 
 NS_CC_BEGIN
 
@@ -40,11 +41,14 @@ private:
     
     float getLevelPositionY(int level);
     
-    CC_SYNTHESIZE(float, levelSpacing, LavelSpacing);
-    CC_SYNTHESIZE(float, platformHeight, PlatformHeight);
-    CC_SYNTHESIZE(int, numPlatforms, NumPlatforms);
-    CC_SYNTHESIZE(Player*, player, Player);
+    CC_SYNTHESIZE(float, levelSpacing, LavelSpacing)
+    CC_SYNTHESIZE(float, platformHeight, PlatformHeight)
+    CC_SYNTHESIZE(int, numPlatforms, NumPlatforms)
+    
+    CC_SYNTHESIZE(Player*, player, Player)
+    CC_SYNTHESIZE(World*, world, World)
     CC_SYNTHESIZE(std::vector<Enemy*>, enemies, Enemies)
+    //CC_SYNTHESIZE(std::vector<Bullet*>, bullets, Bullets)
 };
 
 NS_CC_END

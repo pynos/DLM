@@ -62,6 +62,8 @@
 		840D06BC1DD99FD500C75A5E /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840D06BA1DD99FD500C75A5E /* Player.cpp */; };
 		840D06BF1DD9A09300C75A5E /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840D06BD1DD9A09300C75A5E /* Actor.cpp */; };
 		840D06C21DD9A41400C75A5E /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840D06C01DD9A41400C75A5E /* Enemy.cpp */; };
+		840D06CB1DDAE6AA00C75A5E /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840D06C91DDAE6AA00C75A5E /* World.cpp */; };
+		840D06CE1DDAE8F700C75A5E /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840D06CC1DDAE8F700C75A5E /* HUD.cpp */; };
 		848D2F3D1DD43F6600EDE857 /* enemies in Resources */ = {isa = PBXBuildFile; fileRef = 848D2F3C1DD43F6600EDE857 /* enemies */; };
 		849291251DD6D4A900E73B9C /* SceneBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 849291231DD6D4A900E73B9C /* SceneBase.cpp */; };
 		849291261DD6D4A900E73B9C /* SceneBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 849291231DD6D4A900E73B9C /* SceneBase.cpp */; };
@@ -181,6 +183,10 @@
 		840D06BE1DD9A09300C75A5E /* Actor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Actor.hpp; sourceTree = "<group>"; };
 		840D06C01DD9A41400C75A5E /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
 		840D06C11DD9A41400C75A5E /* Enemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Enemy.hpp; sourceTree = "<group>"; };
+		840D06C91DDAE6AA00C75A5E /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
+		840D06CA1DDAE6AA00C75A5E /* World.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = World.hpp; sourceTree = "<group>"; };
+		840D06CC1DDAE8F700C75A5E /* HUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
+		840D06CD1DDAE8F700C75A5E /* HUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HUD.hpp; sourceTree = "<group>"; };
 		848D2F3C1DD43F6600EDE857 /* enemies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = enemies; sourceTree = "<group>"; };
 		849291231DD6D4A900E73B9C /* SceneBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneBase.cpp; sourceTree = "<group>"; };
 		849291241DD6D4A900E73B9C /* SceneBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SceneBase.hpp; sourceTree = "<group>"; };
@@ -342,7 +348,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				840D06B81DD99F7F00C75A5E /* actors */,
+				840D06B81DD99F7F00C75A5E /* sprites */,
 				84B66E1D1DD6E81A003C8E18 /* controllers */,
 				849291271DD6D59300E73B9C /* data */,
 				849291221DD6D46200E73B9C /* scenes */,
@@ -402,7 +408,7 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
-		840D06B81DD99F7F00C75A5E /* actors */ = {
+		840D06B81DD99F7F00C75A5E /* sprites */ = {
 			isa = PBXGroup;
 			children = (
 				840D06BA1DD99FD500C75A5E /* Player.cpp */,
@@ -411,8 +417,12 @@
 				840D06BE1DD9A09300C75A5E /* Actor.hpp */,
 				840D06C01DD9A41400C75A5E /* Enemy.cpp */,
 				840D06C11DD9A41400C75A5E /* Enemy.hpp */,
+				840D06C91DDAE6AA00C75A5E /* World.cpp */,
+				840D06CA1DDAE6AA00C75A5E /* World.hpp */,
+				840D06CC1DDAE8F700C75A5E /* HUD.cpp */,
+				840D06CD1DDAE8F700C75A5E /* HUD.hpp */,
 			);
-			name = actors;
+			name = sprites;
 			sourceTree = "<group>";
 		};
 		849291221DD6D46200E73B9C /* scenes */ = {
@@ -597,6 +607,8 @@
 				840D06C21DD9A41400C75A5E /* Enemy.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* GameScene.cpp in Sources */,
+				840D06CE1DDAE8F700C75A5E /* HUD.cpp in Sources */,
+				840D06CB1DDAE6AA00C75A5E /* World.cpp in Sources */,
 				84B66E201DD6E8A2003C8E18 /* ControllerBase.cpp in Sources */,
 				840D06BF1DD9A09300C75A5E /* Actor.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,

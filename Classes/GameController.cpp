@@ -40,6 +40,9 @@ GameController* GameController::createTestGame(Node* scene)
 
 void GameController::createEnvironment()
 {
+    world = World::create();
+    scene->addChild(world);
+    
     auto spritecache = SpriteFrameCache::getInstance();
     spritecache->addSpriteFramesWithFile("game_art.plist");
     
