@@ -34,6 +34,28 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
+/*
+ - application:application didFinishLaunchingWithOptions:launchOptions
+ {
+ // Override point for customization after application launch.
+ // Add the view controller’s view to the window and display.
+ window = initWithFrame: bounds]];
+ EAGLView \**glView = [EAGLView viewWithFrame: [window bounds]
+ pixelFormat: kEAGLColorFormatRGBA8
+ depthFormat: GL\_DEPTH\_COMPONENT16\_OES
+ preserveBackbuffer: NO
+ sharegroup: nil
+ multiSampling: NO
+ numberOfSamples: 0 ];
+ 
+ [_glView setMultipleTouchEnabled:YES]; // enable multi-touch here![]() It’s at about line 37
+ 
+ // …
+ 
+ return YES;
+ }
+ */
+
 // cocos2d application instance
 static AppDelegate s_sharedApplication;
 
@@ -61,6 +83,8 @@ static AppDelegate s_sharedApplication;
     }
 
     [window makeKeyAndVisible];
+    
+    [window setMultipleTouchEnabled:YES];
 
     [[UIApplication sharedApplication] setStatusBarHidden:true];
 
