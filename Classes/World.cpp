@@ -10,7 +10,10 @@
 
 using namespace cocos2d;
 
-World::World() : background(nullptr)
+World::World()
+: background(nullptr)
+, moveTouchId(-1)
+, aimTouchId(-1)
 {
     
 }
@@ -58,16 +61,90 @@ void World::removeTouchListeners()
 
 bool World::onTouchesBegan(const std::vector<Touch*>& touches, Event* event)
 {
-    CCLOG("touchesBegan");
+    if (moveTouchId > -1 && aimTouchId > -1)
+        return true;
+    
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    
+    for (auto& touch : touches)
+    {
+        if (moveTouchId == -1 && touch->getLocationInView().x < visibleSize.width / 2)
+        {
+            moveTouchId = touch->getID();
+            
+            timeval time;
+            gettimeofday(&time, NULL);
+            unsigned long millisecs = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+            
+            
+        }
+        else if (aimTouchId == -1)
+        {
+            aimTouchId = touch->getID();
+        }
+    }
+    
     return true;
 }
 
 void World::onTouchesMoved(const std::vector<Touch*>& touches, Event* event)
 {
-    CCLOG("touchesMoved");
+    int moveThreshold = 50;
+    
+    for (auto& touch : touches)
+    {
+        Vec2 delta(touch->getLocationInView().x - touch->getStartLocationInView().x, touch->getLocationInView().y - touch->getStartLocationInView().y);
+        
+        if (touch->getID() == moveTouchId)
+        {
+            CCLOG("delta(%f,%f)", delta.x, delta.y);
+            if (delta.x > moveThreshold || delta.x < -moveThreshold)
+            {
+                if (delta.x > 0)
+                {
+                    CCLOG("//facing right");
+                }
+                else
+                {
+                    CCLOG("//facing left");
+                }
+            }
+            else if (delta.y > moveThreshold || delta.y < -moveThreshold)
+            {
+                if (delta.y < 0)
+                {
+                    CCLOG("//facing up");
+                }
+                else
+                {
+                    CCLOG("//facing down");
+                }
+            }
+        }
+        else if (touch->getID() == aimTouchId)
+        {
+            if (delta.y)
+            {
+                
+            }
+        }
+        
+    }
 }
 
 void World::onTouchesEnded(const std::vector<Touch*>& touches, Event* event)
 {
-    CCLOG("touchesEnded");
+    for (auto& touch : touches)
+    {
+        if (moveTouchId == touch->getID())
+        {
+            moveTouchId = -1;
+            isWalking = false;
+        }
+        
+        if (aimTouchId == touch->getID())
+        {
+            aimTouchId = -1;
+        }
+    }
 }

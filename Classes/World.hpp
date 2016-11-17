@@ -32,11 +32,19 @@ public:
     void onTouchesMoved(const std::vector<Touch*>& touches, Event* event);
     void onTouchesEnded(const std::vector<Touch*>& touches, Event* event);
     
+    
 protected:
     
 private:
-    CC_SYNTHESIZE(Sprite*, background, Background);
-    CC_SYNTHESIZE(std::set<Sprite*>, platforms, Platforms);
+    CC_SYNTHESIZE(Sprite*, background, Background)
+    CC_SYNTHESIZE(std::set<Sprite*>, platforms, Platforms)
+    CC_SYNTHESIZE(int, moveTouchId, NavigationTouchId)
+    CC_SYNTHESIZE(int, aimTouchId, aimTouchId)
+    CC_SYNTHESIZE(int, isWalking, IsWalking)
+    CC_SYNTHESIZE(float, walkingDirection, WalkingDirection)
+    CC_SYNTHESIZE(float, timeStartAimTouch, timeStartAimTouch)
+    
+    Vec2 deltaDistance;
 };
 
 #endif /* World_hpp */

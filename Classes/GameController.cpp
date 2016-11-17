@@ -51,6 +51,15 @@ void GameController::createEnvironment()
         auto visibleSize = Director::getInstance()->getVisibleSize();
         Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
+        Sprite* bg = Sprite::createWithSpriteFrameName("phone_bg.png");
+        if (bg)
+        {
+            bg->setAnchorPoint( Vec2(0,0) );
+            //bg->setScale(visibleSize.height / bg->getContentSize().height);
+            bg->setPosition(Vec2(0,0));// Vec2(origin.x, origin.y) );
+            scene->addChild(bg);
+        }
+        
         Sprite* s = Sprite::createWithSpriteFrameName("platform.png");
         platformHeight = s->getContentSize().height;
         levelSpacing = (visibleSize.height - (s->getContentSize().height * numPlatforms)) / numPlatforms;
@@ -62,7 +71,9 @@ void GameController::createEnvironment()
             
             s->setAnchorPoint(Vec2(0,1));
             s->setPosition(origin.x, getLevelPositionY(i));
-            s->setScaleX(visibleSize.width / s->getContentSize().width);
+            float scale = visibleSize.width / s->getContentSize().width;
+            s->setScaleX(scale);
+            CCLOG("width: %d", int(scale * s->getContentSize().width));
             
             scene->addChild(s);
         }
